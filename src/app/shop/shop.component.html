@@ -1,7 +1,7 @@
 <h2>Categories</h2>
 <ul>
-  <li>Game Consoles</li>
-  <li>Phones</li>
-  <li>Books</li>
+    <li *ngFor="let categorie of categories">
+      <span>{{categorie.name}}</span>
+    </li>
 </ul>
 <app-bestsellers></app-bestsellers>
