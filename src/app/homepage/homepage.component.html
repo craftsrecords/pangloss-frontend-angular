@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <span>{{title}}</span>
+</mat-toolbar>
+<div class="grid-container">
+    <mat-grid-list cols="3" rowHeight="180px">
+      <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+        <mat-card class="category-card" [ngStyle]="{'background': 'url(' + card.img + ') center / cover'}">
+          <mat-card-content class="category-title">
+            <mat-card-title>
+              {{card.title}}
+            </mat-card-title>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  
+
+
