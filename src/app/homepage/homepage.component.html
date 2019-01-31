@@ -1,6 +1,3 @@
-<mat-toolbar color="primary">
-  <span>{{title}}</span>
-</mat-toolbar>
 <div class="categories">
   <mat-grid-list cols="3" rowHeight="100px">
     <mat-grid-tile *ngFor="let category of categories | async" [colspan]="category.cols" [rowspan]="category.rows">

@@ -8,13 +8,17 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,  MatCardModule, MatGridListModule, MatMenuModule} from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreditsComponent } from './credits/credits.component';
+import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
     DashboardComponent,
-    CreditsComponent
+    CreditsComponent,
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
