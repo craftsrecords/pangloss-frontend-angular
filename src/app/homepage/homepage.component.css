@@ -16,7 +16,7 @@
   z-index: 1;
 }
 
-.grid-container {
+.categories {
   margin: 20px;
 }
 
@@ -31,4 +31,26 @@
 
 .category-title{
   color: white;
+  }
+
+  .item-header-image{
+    background-image: url('/assets/images/consoles/icon.png');
+    background-size: cover;
+  }
+
+  .item-card {
+   height: 200px;
+   width: 300px;
+   text-align: center;
+  }
+
+  .items{
+    margin: 20px;
+  }
+
+  .item-image{
+    height: 150px;
+    max-width: 200px;
+    object-fit: contain;
+    margin: auto;
   }

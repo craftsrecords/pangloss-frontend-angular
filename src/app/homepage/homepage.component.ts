@@ -10,34 +10,41 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
-  title : String = 'Pangloss';
+  title: String = 'Pangloss';
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
-    /*cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-      map(({ matches }) => {
-        if (matches) {
-          return [
-            { title: 'Card 1', cols: 1, rows: 1 },
-            { title: 'Card 2', cols: 1, rows: 2 },
-            { title: 'Card 3', cols: 1, rows: 3 }
-          ];
-        }
-  
+  /*cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+    map(({ matches }) => {
+      if (matches) {
         return [
           { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 2, rows: 1 },
-          { title: 'Card 3', cols: 3, rows: 1 }
+          { title: 'Card 2', cols: 1, rows: 2 },
+          { title: 'Card 3', cols: 1, rows: 3 }
         ];
-      })
-    );*/
+      }
+ 
+      return [
+        { title: 'Card 1', cols: 1, rows: 1 },
+        { title: 'Card 2', cols: 2, rows: 1 },
+        { title: 'Card 3', cols: 3, rows: 1 }
+      ];
+    })
+  );*/
 
-    cards = of([
-      { title: 'Game Consoles', cols: 1, rows: 1, img: 'assets/images/gameconsoles.jpg' },
-      { title: 'Phones', cols: 1, rows: 1, img: 'assets/images/phones.jpg'  },
-      { title: 'Books', cols: 1, rows: 1, img: 'assets/images/books.jpg'  }]);
+  categories = of([
+    { title: 'Game Consoles', cols: 1, rows: 1, img: 'assets/images/categories/gameconsoles.jpg' },
+    { title: 'Phones', cols: 1, rows: 1, img: 'assets/images/categories/phones.jpg' },
+    { title: 'Books', cols: 1, rows: 1, img: 'assets/images/categories/books.jpg' }]);
 
-  constructor(private breakpointObserver: BreakpointObserver, private sanitizer: DomSanitizer) {}
+  items = of([
+    { title: 'XBox', cols: 1, rows: 1, img: 'assets/images/consoles/xbox.jpg' },
+    { title: 'XBox360', cols: 1, rows: 1, img: 'assets/images/consoles/xbox360.jpg' },
+    { title: 'Nintendo NES', cols: 1, rows: 1, img: 'assets/images/consoles/nes.jpg' },
+    { title: 'Nintendo 3DS', cols: 1, rows: 1, img: 'assets/images/consoles/nintendo3ds.jpg' },
+  ]);
+
+  constructor(private breakpointObserver: BreakpointObserver, private sanitizer: DomSanitizer) { }
 }

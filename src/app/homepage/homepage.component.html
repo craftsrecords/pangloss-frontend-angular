@@ -1,19 +1,31 @@
 <mat-toolbar color="primary">
-    <span>{{title}}</span>
+  <span>{{title}}</span>
 </mat-toolbar>
-<div class="grid-container">
-    <mat-grid-list cols="3" rowHeight="180px">
-      <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-        <mat-card class="category-card" [ngStyle]="{'background': 'url(' + card.img + ') center / cover'}">
-          <mat-card-content class="category-title">
-            <mat-card-title>
-              {{card.title}}
-            </mat-card-title>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
-  
-
-
+<div class="categories">
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile *ngFor="let category of categories | async" [colspan]="category.cols" [rowspan]="category.rows">
+      <mat-card class="category-card" [ngStyle]="{'background': 'url(' + category.img + ') center / cover'}">
+        <mat-card-content class="category-title">
+          <mat-card-title>
+            {{category.title}}
+          </mat-card-title>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div class="items">
+  <mat-grid-list cols="4">
+    <mat-grid-tile *ngFor="let item of items | async" [colspan]="item.cols" [rowspan]="item.rows">
+      <mat-card class="item-card">
+        <img mat-card-image src="{{item.img}}" class="item-image">
+        <mat-card-header>
+          <div mat-card-avatar class="item-header-image"></div>
+          <mat-card-title>{{item.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="item-title">
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
