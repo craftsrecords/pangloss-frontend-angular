@@ -1,3 +1,13 @@
 <mat-toolbar color="primary">
+  <img class="logo" src="assets/images/wig.png">
   <span>{{title}}</span>
+  <button class="profile" mat-raised-button	 [matMenuTriggerFor]="profileMenu">
+    Welcome {{loggedUser}} !!
+  </button>
+  <mat-menu #profileMenu="matMenu">
+    <button class="profile-menu" mat-menu-item (click)="logout()">
+      <mat-icon color="primary">logout</mat-icon>
+      <span>logout</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>

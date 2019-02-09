@@ -5,10 +5,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AuthGuardService as AuthGuard } from './auth-guard.service'
 
 const routes: Routes = [
-  { path: '', component: LoginComponent},
   { path: 'login', component: LoginComponent },
   { path: 'shop', component: HomepageComponent, canActivate: [AuthGuard]},
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'shop' }
 ];
 
 @NgModule({

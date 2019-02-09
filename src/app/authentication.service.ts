@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, pluck } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,18 @@ export class AuthenticationService {
     return of(false)
   };
 
+  private profile() {
+    return this.http.get<any>(`${environment.backendUrl}/profile`);
+  }
+
+
   isAuthenticated(): Observable<boolean> {
-    return this.http.get<any>(`${environment.backendUrl}/profile`)
+    return this.profile()
       .pipe(map(profile => profile.name !== null), catchError(this.handleError))
+  }
+
+  loggedUser(): Observable<String> {
+    return this.profile().pipe(pluck('name'))
   }
 
   authenticate(username, password) {
@@ -28,7 +37,7 @@ export class AuthenticationService {
     return this.http.post<any>(`${environment.backendUrl}/login`, loginRequest)
   }
 
-  logout(){
+  logout() {
     return this.http.post<any>(`${environment.backendUrl}/logout`, null)
   }
 
