@@ -11,9 +11,12 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   errorMessage: string = 'Unable to login, please retry'
-  hasErrors : boolean = false
+  hasErrors: boolean = false
 
-  constructor(private auth : AuthenticationService, private router: Router) { }
+  constructor(private auth: AuthenticationService, private router: Router) {
+    //forcing logout when landing on the login page
+    this.auth.logout().subscribe()
+  }
 
 
   ngOnInit() {
@@ -21,12 +24,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.auth.authenticate(this.username, this.password)
-    .subscribe(
-      response => this.navigateToShop(), 
-      error => this.hasErrors = true)
+      .subscribe(
+        response => this.navigateToShop(),
+        error => this.hasErrors = true)
   }
 
-  private navigateToShop(){
+  private navigateToShop() {
     this.hasErrors = false
     this.router.navigate(["shop"])
   }

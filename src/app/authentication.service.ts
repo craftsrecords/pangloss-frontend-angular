@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import { HttpClient, HttpParams, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -16,15 +16,9 @@ export class AuthenticationService {
   };
 
   isAuthenticated(): Observable<boolean> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'X-Requested-With': 'XMLHttpRequest',
-      })
-    }
-    return this.http.get<any>(`${environment.backendUrl}/profile`, httpOptions)
+    return this.http.get<any>(`${environment.backendUrl}/profile`)
       .pipe(map(profile => profile.name !== null), catchError(this.handleError))
   }
-
 
   authenticate(username, password) {
     const loginRequest = new HttpParams()
@@ -33,4 +27,9 @@ export class AuthenticationService {
 
     return this.http.post<any>(`${environment.backendUrl}/login`, loginRequest)
   }
+
+  logout(){
+    return this.http.post<any>(`${environment.backendUrl}/logout`, null)
+  }
+
 }
