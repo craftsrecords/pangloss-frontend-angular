@@ -5,6 +5,7 @@
         <mat-card-title>Welcome to Pangloss !</mat-card-title>
         <mat-card-subtitle class>Shopping where all is for the best in the best of all possible worlds</mat-card-subtitle>
     </mat-card-header>
+    <div class="error" [hidden]=!hasErrors>{{errorMessage}}</div>
     <form>
       <mat-form-field class="login-element">
         <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>

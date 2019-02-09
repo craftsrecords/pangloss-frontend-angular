@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,10 @@ import { AuthenticationService } from '../authentication.service';
 export class LoginComponent implements OnInit {
   username: string;
   password: string;
-  constructor(private auth : AuthenticationService) { }
+  errorMessage: string = 'Unable to login, please retry'
+  hasErrors : boolean = false
+
+  constructor(private auth : AuthenticationService, private router: Router) { }
 
 
   ngOnInit() {
@@ -17,6 +21,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.auth.authenticate(this.username, this.password)
+    .subscribe(
+      response => this.navigateToShop(), 
+      error => this.hasErrors = true)
+  }
+
+  private navigateToShop(){
+    this.hasErrors = false
+    this.router.navigate(["shop"])
   }
 
 }
