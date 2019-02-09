@@ -1,0 +1,20 @@
+.login-page{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card{
+    width: 20%;
+}
+
+.login-card-header{
+    flex-direction: column-reverse; 
+    align-items: center;
+    text-align: center;
+}
+
+.login-element{
+    width: 100%;
+}
