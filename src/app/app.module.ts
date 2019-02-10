@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomepageComponent } from './homepage/homepage.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatGridListModule, MatMenuModule, MatInputModule,  MatDialogModule,  MatTableModule,  MatProgressSpinnerModule } from '@angular/material';
 import { CreditsComponent } from './credits/credits.component';
@@ -19,7 +18,6 @@ import { CategoryDetailsComponent } from './shop/category/category-details/categ
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent,
     CreditsComponent,
     LoginComponent,
     HeaderComponent,
