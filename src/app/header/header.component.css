@@ -9,8 +9,11 @@
     right: 0;
     margin-right: 40px;
     width: 140px;
+    color: #673AB7;
 }
 
 .profile-menu{
     width: 140px;
+    font-weight: 500;
+    color: #673AB7;
 }

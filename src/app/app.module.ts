@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule} from '@angular/common/http';
+import { ShopComponent } from './shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule} from '@angular/common/http';
     HomepageComponent,
     CreditsComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    ShopComponent
   ],
   imports: [
     FormsModule,
@@ -41,6 +43,7 @@ import { HttpClientModule} from '@angular/common/http';
     MatInputModule,
     MatDialogModule,
     MatTableModule,
+    MatSidenavModule,
     MatProgressSpinnerModule,
     AppRoutingModule,
     HttpClientModule

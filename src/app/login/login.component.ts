@@ -14,12 +14,10 @@ export class LoginComponent implements OnInit {
   hasErrors: boolean = false
 
   constructor(private auth: AuthenticationService, private router: Router) {
-    //forcing logout when landing on the login page
-    this.auth.logout().subscribe()
   }
 
-
   ngOnInit() {
+    this.logout();
   }
 
   login() {
@@ -32,6 +30,11 @@ export class LoginComponent implements OnInit {
   private navigateToShop() {
     this.hasErrors = false
     this.router.navigate(["shop"])
+  }
+
+  private logout() {
+    //forcing logout when landing on the login page
+    this.auth.logout().subscribe()
   }
 
 }

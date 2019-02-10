@@ -1,0 +1,11 @@
+<app-header></app-header>
+<mat-sidenav-container class="shop">
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let categorie of categories">{{categorie.name}}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <p>blbla</p>
+  </mat-sidenav-content>
+</mat-sidenav-container>
