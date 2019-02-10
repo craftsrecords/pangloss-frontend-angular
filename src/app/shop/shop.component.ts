@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from './categorie/categories.service';
+import { CategoriesService } from './category/categories.service';
 import { Observable } from 'rxjs';
-import { Categorie } from './categorie/categorie';
+import { Category } from "./category/category";
 
 @Component({
   selector: 'app-shop',
@@ -10,17 +10,25 @@ import { Categorie } from './categorie/categorie';
 })
 export class ShopComponent implements OnInit {
 
-  categories: Categorie[]
+  categories: Category[]
+  selectedCategory: Category
 
   constructor(private categoriesService: CategoriesService) { }
 
   ngOnInit() {
-    this.getCategories();
+    this.initiateCategories();
   }
 
-  private getCategories() {
+  private initiateCategories() {
     this.categoriesService.getCategories()
-      .subscribe(categories => this.categories = categories);
+      .subscribe(categories =>{ 
+        this.categories = categories
+        this.selectedCategory = categories[0]
+      });
+  }
+
+  private onSelect(category: Category) {
+    this.selectedCategory = category
   }
 
 }

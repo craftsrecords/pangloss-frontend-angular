@@ -1,0 +1,10 @@
+.category-card {
+    box-shadow: inset 0px 0px 300px rgba(0,0,0,0.3);
+    height: 15vh;
+  }
+  
+.category-title{
+    color: white;
+}
+
+  

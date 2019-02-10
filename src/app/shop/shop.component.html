@@ -1,11 +1,21 @@
 <app-header></app-header>
 <mat-sidenav-container class="shop">
-  <mat-sidenav mode="side" opened>
-    <mat-nav-list>
-      <a mat-list-item *ngFor="let categorie of categories">{{categorie.name}}</a>
+  <mat-sidenav class="categories-menu" mode="side" opened>
+    <mat-nav-list class="categories">
+      <a mat-list-item class="category" *ngFor="let category of categories" (click)="onSelect(category)"
+        [class.selected]="category === selectedCategory">
+        {{category.name}}
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <p>blbla</p>
+    <div class="content">
+      <app-category-details [category]="selectedCategory"></app-category-details>
+      <app-items [categoryId]="selectedCategory.id"></app-items>
+    </div>
   </mat-sidenav-content>
+  <mat-sidenav class="cart" mode="side" position="end" opened>
+    <p>cart</p>
+  </mat-sidenav>
 </mat-sidenav-container>
+<app-credits></app-credits>

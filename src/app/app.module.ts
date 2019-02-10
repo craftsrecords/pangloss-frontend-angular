@@ -13,6 +13,8 @@ import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule} from '@angular/common/http';
 import { ShopComponent } from './shop/shop.component';
+import { ItemsComponent } from './shop/items/items.component';
+import { CategoryDetailsComponent } from './shop/category/category-details/category-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ShopComponent } from './shop/shop.component';
     CreditsComponent,
     LoginComponent,
     HeaderComponent,
-    ShopComponent
+    ShopComponent,
+    ItemsComponent,
+    CategoryDetailsComponent
   ],
   imports: [
     FormsModule,
