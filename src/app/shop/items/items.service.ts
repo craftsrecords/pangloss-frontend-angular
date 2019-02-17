@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Item } from './item';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemsService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  getItemsOfCategory(categoryId : String) : Observable<Item[]> {
-    console.log(`category ${categoryId}`)
+  getItemsOfCategory(categoryId : string) : Observable<Item[]> {
+   /* console.log(`category ${categoryId}`)
     const items : Item[] = [
       { id: "95", name: 'Game Station IV', image: 'assets/images/consoles/game-station-4.png' },
       { id: "32", name: 'Zune Box One', image: 'assets/images/consoles/zune-box-one.png' },
@@ -21,6 +23,7 @@ export class ItemsService {
       { id: "53", name: 'GameSquare', image: 'assets/images/consoles/gamesquare.png' },
       { id: "2", name: 'SupraDrive', image: 'assets/images/consoles/supradrive.png' },
     ]
-    return of(items);
+    return of(items);*/
+    return this.http.post<Item[]>(`${environment.backendUrl}/items`,{'categoryId' : categoryId})
   }
 }
