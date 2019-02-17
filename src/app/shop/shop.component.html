@@ -9,7 +9,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div class="content">
+    <div class="content" *ngIf="selectedCategory">
       <app-category-details [category]="selectedCategory"></app-category-details>
       <app-items [categoryId]="selectedCategory.id"></app-items>
     </div>
