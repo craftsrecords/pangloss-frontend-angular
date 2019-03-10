@@ -9,7 +9,7 @@ import { ItemsService } from './items.service';
 })
 export class ItemsComponent implements OnInit, OnChanges {
 
-  @Input() categoryId: String
+  @Input() categoryId: string
   items: Item[]
 
   constructor(private itemsService: ItemsService) { }
