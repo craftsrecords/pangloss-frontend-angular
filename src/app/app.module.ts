@@ -14,6 +14,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { ShopComponent } from './shop/shop.component';
 import { ItemsComponent } from './shop/items/items.component';
 import { CategoryDetailsComponent } from './shop/category/category-details/category-details.component';
+import { CartComponent } from './shop/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CategoryDetailsComponent } from './shop/category/category-details/categ
     HeaderComponent,
     ShopComponent,
     ItemsComponent,
-    CategoryDetailsComponent
+    CategoryDetailsComponent,
+    CartComponent
   ],
   imports: [
     FormsModule,
