@@ -3,9 +3,12 @@
     <mat-card class="item-card">
       <img mat-card-image src="assets/images/items/{{item.id}}.png" class="item-image">
         <mat-card-title>{{item.name}}</mat-card-title>
-        <mat-card-subtitle>{{item.price}}</mat-card-subtitle>
+        <mat-card-subtitle>{{item.price}} €</mat-card-subtitle>
       <mat-card-content class="item-title">
       </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="addToCart(item)">Buy</button>
+      </mat-card-actions>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>

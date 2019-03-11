@@ -9,13 +9,13 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div class="content" *ngIf="selectedCategory">
+    <div class="content" *ngIf="selectedCategory && cart">
       <app-category-details [category]="selectedCategory"></app-category-details>
-      <app-items [categoryId]="selectedCategory.id"></app-items>
+      <app-items [categoryId]="selectedCategory.id" [cart]=cart></app-items>
     </div>
   </mat-sidenav-content>
   <mat-sidenav class="cart" mode="side" position="end" opened>
-    <app-cart></app-cart>
+    <app-cart [cart]=cart></app-cart>
   </mat-sidenav>
 </mat-sidenav-container>
 <app-credits></app-credits>

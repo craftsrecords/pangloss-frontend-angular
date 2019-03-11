@@ -1,0 +1,14 @@
+.cart{
+    margin: 20px
+}
+
+.cart-title{
+    display: flex;
+    align-items: center;
+}
+
+.item-cart-image{
+    max-height: 40px;
+    max-width: 40px;
+    margin-right: 5px;
+}
