@@ -2,12 +2,14 @@
   <mat-grid-tile *ngFor="let item of items">
     <mat-card class="item-card">
       <img mat-card-image src="assets/images/items/{{item.id}}.png" class="item-image">
-        <mat-card-title>{{item.name}}</mat-card-title>
+        <h2 class="mat-h2">{{item.name}}</h2>
         <mat-card-subtitle>{{item.price}} €</mat-card-subtitle>
       <mat-card-content class="item-title">
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button (click)="addToCart(item)">Buy</button>
+        <button class="buy" color="primary" mat-icon-button (click)="addToCart(item)">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>

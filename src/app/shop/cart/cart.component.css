@@ -12,3 +12,7 @@
     max-width: 40px;
     margin-right: 5px;
 }
+
+.item{
+    min-height: 80px;
+}

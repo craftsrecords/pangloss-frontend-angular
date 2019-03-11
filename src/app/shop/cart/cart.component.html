@@ -3,7 +3,7 @@
       <mat-icon class="cart-icon" color="primary">shopping_cart</mat-icon>Cart
   </div>
   <mat-list>
-    <mat-list-item *ngFor="let item of cart.items">
+    <mat-list-item class="item" *ngFor="let item of cart.items">
       <img mat-card-image src="assets/images/items/{{item.id}}.png" class="item-cart-image">
       <div>{{item.name}} - {{item.price}} €</div>
     </mat-list-item>

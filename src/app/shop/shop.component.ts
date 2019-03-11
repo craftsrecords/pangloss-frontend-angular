@@ -23,13 +23,15 @@ export class ShopComponent implements OnInit {
     this.createCart()
   }
 
- private createCart(){
-    this.cartService.createCart().subscribe(cart => this.cart = cart)
+  private createCart() {
+    if (this.cart == null) {
+      this.cartService.createCart().subscribe(cart => this.cart = cart)
+    }
   }
 
   private initiateCategories() {
     this.categoriesService.getCategories()
-      .subscribe(categories =>{ 
+      .subscribe(categories => {
         this.categories = categories
         this.selectedCategory = categories[0]
       });

@@ -10,9 +10,15 @@
 }
 
 .item-image {
-  max-height: 250px;
+  max-height: 200px;
   max-width: 200px;
   object-fit: contain;
   margin: auto;
   padding-top: 20px;
+}
+
+.buy{
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
