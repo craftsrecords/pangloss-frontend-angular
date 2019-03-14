@@ -10,5 +10,7 @@
     <mat-divider></mat-divider>
   </mat-list>
   <h3 class="mat-h3">Shipping to</h3>
-  <span>{{cart.address}}</span>
+  <mat-form-field>
+    <input matInput [(ngModel)]="cart.address" (change)="changeAddress()" placeholder="Address">
+  </mat-form-field>
 </div>

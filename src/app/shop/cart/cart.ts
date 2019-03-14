@@ -3,6 +3,6 @@ import { Links } from '../links';
 
 export class Cart {
     items: Item[]
-    address: String
+    address: string
     _links:Links
 }

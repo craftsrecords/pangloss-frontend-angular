@@ -9,8 +9,8 @@ import { Item } from '../items/item';
   providedIn: 'root'
 })
 export class CartService {
-
-
+  headers = new HttpHeaders({'Content-Type':'application/json-patch+json'});
+  
   constructor(private http:HttpClient) { }
 
   createCart() : Observable<Cart> {
@@ -18,10 +18,16 @@ export class CartService {
   }
 
   addItem(cart:Cart, item:Item){
-    const headers = new HttpHeaders({'Content-Type':'application/json-patch+json'});
     return this.http.patch<Cart>(cart._links.self.href,
         [{ "op" : "add", "path" : "/items/-", "value" : { "id": item.id, "name": item.name, "price": item.price } }],
-        {"headers" : headers})
+        {"headers" : this.headers})
     .subscribe(newCart => {cart.items = newCart.items; cart.address = newCart.address})
+  }
+
+  udpateAddress(cart: Cart) {
+    return this.http.patch<Cart>(cart._links.self.href,
+      [{ "op" : "add", "path" : "/address", "value" : cart.address }],
+      {"headers" : this.headers})
+  .subscribe(newCart => {cart.items = newCart.items; cart.address = newCart.address})
   }
 }
