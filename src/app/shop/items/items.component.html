@@ -1,4 +1,4 @@
-<mat-grid-list cols="3">
+<mat-grid-list [cols]="columnsNumber">
   <mat-grid-tile *ngFor="let item of items">
     <mat-card class="item-card">
       <img mat-card-image src="assets/images/items/{{item.id}}.png" class="item-image">

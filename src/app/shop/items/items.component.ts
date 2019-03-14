@@ -3,6 +3,8 @@ import { Item } from './item';
 import { ItemsService } from './items.service';
 import { CartService } from '../cart/cart.service';
 import { Cart } from '../cart/cart';
+import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-items',
@@ -14,11 +16,25 @@ export class ItemsComponent implements OnInit, OnChanges {
   @Input() cart: Cart
   @Input() categoryId: string
   items: Item[]
+  columnsNumber = 3
 
-  constructor(private itemsService: ItemsService, private cartService: CartService) { }
+  constructor(
+    private itemsService: ItemsService,
+    private cartService: CartService, 
+    private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit() {
     this.retrieveItems()
+    this.breakpointObserver
+      .observe(['(min-width: 1450px)'])
+      .subscribe((state: BreakpointState) => {
+        console.log(state)
+        if (state.matches) {
+          this.columnsNumber = 3
+        } else {
+         this.columnsNumber = 2
+        }
+      });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -31,7 +47,7 @@ export class ItemsComponent implements OnInit, OnChanges {
       .subscribe(items => this.items = items)
   }
 
-  private addToCart(item:Item){
+  private addToCart(item: Item) {
     this.cartService.addItem(this.cart, item)
   }
 }
