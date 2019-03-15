@@ -1,31 +1,38 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CartService } from './cart.service';
 import { Cart } from './cart';
-import { DomSanitizer, SafeHtml, SafeScript } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit, AfterViewInit {
+export class CartComponent implements OnInit {
 
   @Input() cart: Cart
+  errorMessage: string = 'Please fill a delivery address and choose some items'
+  addressNotFilled: boolean = false
 
   constructor(private cartService: CartService) {
 
-   }
-
-  ngOnInit() {
-     
   }
 
-  ngAfterViewInit(): void {
-
+  ngOnInit() {
   }
 
   private changeAddress() {
-    this.cartService.udpateAddress(this.cart) 
+    this.cartService.udpateAddress(this.cart)
+    this.addressNotFilled = false
   }
 
+  private purchase() {
+    if (this.cart.address && this.cart.items && this.cart.items.length > 0) {
+      this.addressNotFilled = false
+      this.cartService.udpateAddress(this.cart)
+      this.cartService.purchase(this.cart)
+    }else{
+      this.addressNotFilled = true
+    }
+  }
 }

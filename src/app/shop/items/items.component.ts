@@ -28,7 +28,6 @@ export class ItemsComponent implements OnInit, OnChanges {
     this.breakpointObserver
       .observe(['(min-width: 1450px)'])
       .subscribe((state: BreakpointState) => {
-        console.log(state)
         if (state.matches) {
           this.columnsNumber = 3
         } else {

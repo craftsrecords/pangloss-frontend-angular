@@ -16,3 +16,13 @@
 .item{
     min-height: 80px;
 }
+
+.purchase{
+    width: 100%
+}
+
+.error{
+    color: red;
+    text-align: center;
+    width: 100%;
+}

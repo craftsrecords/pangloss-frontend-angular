@@ -1,7 +1,12 @@
 {
-    "/api": {
-      "target": "http://localhost:8080",
-      "secure": false,
+  "/api": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/purchases": {
+    "target": "http://localhost:8080",
+    "secure": false,
     "logLevel": "debug"
   }
 }

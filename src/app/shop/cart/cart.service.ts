@@ -4,6 +4,7 @@ import { Cart } from './cart';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Item } from '../items/item';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { Item } from '../items/item';
 export class CartService {
   headers = new HttpHeaders({'Content-Type':'application/json-patch+json'});
   
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router:Router) { }
 
   createCart() : Observable<Cart> {
     return this.http.post<Cart>(`${environment.backendUrl}/carts`,{})
@@ -29,5 +30,10 @@ export class CartService {
       [{ "op" : "add", "path" : "/address", "value" : cart.address }],
       {"headers" : this.headers})
   .subscribe(newCart => {cart.items = newCart.items; cart.address = newCart.address})
+  }
+
+  purchase(cart: Cart){
+    const cartId = cart._links.self.href.substring("http://localhost:4200/api/carts/".length)
+    window.location.href =`http://localhost:8080/purchases/${cartId}`
   }
 }
