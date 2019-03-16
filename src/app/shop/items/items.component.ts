@@ -47,6 +47,6 @@ export class ItemsComponent implements OnInit, OnChanges {
   }
 
   private addToCart(item: Item) {
-    this.cartService.addItem(this.cart, item)
+    this.cartService.addItem(this.cart, item).subscribe(cart => this.cart.items = cart.items)
   }
 }

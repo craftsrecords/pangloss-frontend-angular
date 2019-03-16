@@ -18,18 +18,16 @@ export class CartService {
     return this.http.post<Cart>(`${environment.backendUrl}/carts`,{})
   }
 
-  addItem(cart:Cart, item:Item){
+  addItem(cart:Cart, item:Item) : Observable<Cart>{
     return this.http.patch<Cart>(cart._links.self.href,
         [{ "op" : "add", "path" : "/items/-", "value" : { "id": item.id, "name": item.name, "price": item.price } }],
         {"headers" : this.headers})
-    .subscribe(newCart => {cart.items = newCart.items; cart.address = newCart.address})
   }
 
-  udpateAddress(cart: Cart) {
+  udpateAddress(cart: Cart) : Observable<Cart>{
     return this.http.patch<Cart>(cart._links.self.href,
       [{ "op" : "add", "path" : "/address", "value" : cart.address }],
       {"headers" : this.headers})
-  .subscribe(newCart => {cart.items = newCart.items; cart.address = newCart.address})
   }
 
   purchase(cart: Cart){

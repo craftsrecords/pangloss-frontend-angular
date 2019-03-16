@@ -13,6 +13,6 @@
   <mat-form-field>
     <input matInput [(ngModel)]="cart.address" (change)="changeAddress()" placeholder="Address">
   </mat-form-field>
-  <div class="error" [hidden]=!addressNotFilled>{{errorMessage}}</div>
-  <button class="purchase" mat-raised-button (click)="purchase()" color="primary">Purchase</button>
+  <div class="error" [hidden]=!hasErrors>{{errorMessage}}</div>
+  <button class="purchase" mat-raised-button [disabled]="!isPurchasable()" (click)="purchase()" color="primary">Purchase</button>
 </div>
