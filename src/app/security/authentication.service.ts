@@ -16,7 +16,7 @@ export class AuthenticationService {
   };
 
   private profile() {
-    return this.http.get<any>(`${environment.backendUrl}/profile`);
+    return this.http.get<any>(`${environment.apiUrl}/profile`);
   }
 
 
@@ -34,11 +34,11 @@ export class AuthenticationService {
       .set(`username`, username)
       .set(`password`, password)
 
-    return this.http.post<any>(`${environment.backendUrl}/login`, loginRequest)
+    return this.http.post<any>(`${environment.apiUrl}/login`, loginRequest)
   }
 
   logout() {
-    return this.http.post<any>(`${environment.backendUrl}/logout`, null)
+    return this.http.post<any>(`${environment.apiUrl}/logout`, null)
   }
 
 }

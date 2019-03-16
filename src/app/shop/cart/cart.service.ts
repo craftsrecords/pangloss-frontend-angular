@@ -15,7 +15,7 @@ export class CartService {
   constructor(private http:HttpClient, private router:Router) { }
 
   createCart() : Observable<Cart> {
-    return this.http.post<Cart>(`${environment.backendUrl}/carts`,{})
+    return this.http.post<Cart>(`${environment.apiUrl}/carts`,{})
   }
 
   addItem(cart:Cart, item:Item) : Observable<Cart>{
@@ -31,7 +31,7 @@ export class CartService {
   }
 
   purchase(cart: Cart){
-    const cartId = cart._links.self.href.substring("http://localhost:4200/api/carts/".length)
-    window.location.href =`http://localhost:8080/purchases/${cartId}`
+    const cartId = cart._links.self.href.substring(`${environment.backendUrl}/api/carts/`.length +1)
+    window.location.href =`${environment.backendUrl}/purchases/${cartId}`
   }
 }
