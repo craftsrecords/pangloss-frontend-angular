@@ -10,11 +10,12 @@ import { CreditsComponent } from './credits/credits.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ShopComponent } from './shop/shop.component';
 import { ItemsComponent } from './shop/items/items.component';
 import { CategoryDetailsComponent } from './shop/category/category-details/category-details.component';
 import { CartComponent } from './shop/cart/cart.component';
+import { UnauthorizedInterceptor } from './security/unauthorized-interceptor';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,13 @@ import { CartComponent } from './shop/cart/cart.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
