@@ -16,7 +16,7 @@ export class AuthenticationService {
   };
 
   private profile() {
-    return this.http.get<any>(`${environment.apiUrl}/profile`);
+    return this.http.get<any>(`${environment.apiUrl}/profile`,{withCredentials: true});
   }
 
 
@@ -34,7 +34,7 @@ export class AuthenticationService {
       .set(`username`, username)
       .set(`password`, password)
 
-    return this.http.post<any>(`${environment.apiUrl}/login`, loginRequest)
+    return this.http.post<any>(`${environment.apiUrl}/login`, loginRequest, {withCredentials: true})
   }
 
   logout() {

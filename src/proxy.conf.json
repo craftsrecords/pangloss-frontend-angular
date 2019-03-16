@@ -1,12 +1,1 @@
-{
-  "/api": {
-    "target": "http://localhost:1759",
-    "secure": false,
-    "logLevel": "debug"
-  },
-  "/purchases": {
-    "target": "http://localhost:1759",
-    "secure": false,
-    "logLevel": "debug"
-  }
-}
+{}

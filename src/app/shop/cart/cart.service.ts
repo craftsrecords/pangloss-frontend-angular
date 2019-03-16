@@ -15,23 +15,23 @@ export class CartService {
   constructor(private http:HttpClient, private router:Router) { }
 
   createCart() : Observable<Cart> {
-    return this.http.post<Cart>(`${environment.apiUrl}/carts`,{})
+    return this.http.post<Cart>(`${environment.apiUrl}/carts`,{}, {withCredentials: true})
   }
 
   addItem(cart:Cart, item:Item) : Observable<Cart>{
     return this.http.patch<Cart>(cart._links.self.href,
         [{ "op" : "add", "path" : "/items/-", "value" : { "id": item.id, "name": item.name, "price": item.price } }],
-        {"headers" : this.headers})
+        {headers : this.headers, withCredentials: true})
   }
 
   udpateAddress(cart: Cart) : Observable<Cart>{
     return this.http.patch<Cart>(cart._links.self.href,
       [{ "op" : "add", "path" : "/address", "value" : cart.address }],
-      {"headers" : this.headers})
+      {headers : this.headers, withCredentials: true})
   }
 
   purchase(cart: Cart){
-    const cartId = cart._links.self.href.substring(`${environment.backendUrl}/api/carts/`.length +1)
+    const cartId = cart._links.self.href.substring(`${environment.apiUrl}/carts/`.length)
     window.location.href =`${environment.backendUrl}/purchases/${cartId}`
   }
 }

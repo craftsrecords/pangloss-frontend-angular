@@ -12,6 +12,6 @@ export class ItemsService {
   constructor(private http:HttpClient) { }
 
   getItemsOfCategory(categoryId : string) : Observable<Item[]> {
-    return this.http.post<Item[]>(`${environment.apiUrl}/items`,{'categoryId' : categoryId})
+    return this.http.post<Item[]>(`${environment.apiUrl}/items`,{'categoryId' : categoryId}, {withCredentials: true})
   }
 }
