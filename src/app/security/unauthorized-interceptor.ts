@@ -5,7 +5,6 @@ import {
     HttpHandler,
     HttpEvent,
     HttpInterceptor,
-    HttpResponse,
     HttpErrorResponse
 } from "@angular/common/http";
 import { Observable } from 'rxjs';
@@ -19,7 +18,7 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
             tap(
                 event => { },
                 error => {
-                    if (error instanceof HttpErrorResponse) {
+                    if (error instanceof HttpErrorResponse && error.status == 401) {
                         this.router.navigate(['/login'])
                     }
                 }
