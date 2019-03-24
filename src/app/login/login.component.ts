@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.logout();
+    this.retrieveCsrfToken()
+    this.logout()
   }
 
   login() {
@@ -30,6 +31,10 @@ export class LoginComponent implements OnInit {
   private navigateToShop() {
     this.hasErrors = false
     this.router.navigate(["shop"])
+  }
+
+  private retrieveCsrfToken() {
+    this.auth.retrieveCsrfToken().subscribe()
   }
 
   private logout() {

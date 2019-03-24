@@ -10,11 +10,13 @@ import {
 } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class HttpXsrfInterceptor implements HttpInterceptor {
 
-  constructor(private tokenExtractor: HttpXsrfTokenExtractor) {
+  constructor(private tokenExtractor: HttpXsrfTokenExtractor, private authenticationService : AuthenticationService) {
+
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

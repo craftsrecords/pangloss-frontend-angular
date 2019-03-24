@@ -29,12 +29,16 @@ export class AuthenticationService {
     return this.profile().pipe(pluck('name'))
   }
 
-  authenticate(username, password) {
+  authenticate(username : string, password: string) {
     const loginRequest = new HttpParams()
       .set(`username`, username)
       .set(`password`, password)
 
     return this.http.post<any>(`${environment.apiUrl}/login`, loginRequest, {withCredentials: true})
+  }
+
+  retrieveCsrfToken(){
+    return this.http.get<any>(`${environment.apiUrl}/csrf`)
   }
 
   logout() {
