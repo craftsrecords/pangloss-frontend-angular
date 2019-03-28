@@ -7,4 +7,4 @@ For more information about Pangloss, please take a look at the [backend document
 
 Run `ng serve` to launch the front without HTTPS and navigate to `http://localhost:11759/`. In that case you'll have to start also the backend without HTTPS.
 
-To enable HTTPS, run with `ng s -c ssl`
+To enable HTTPS, run with `ng s -c ssl` and navigate to `https://localhost:11759/`.
