@@ -1,7 +1,7 @@
 # Pangloss Frontend
 
 FrontEnd part of the Pangloss project made with Angular 7.
-For more information about Pangloss, please take a look at the [backend documentation](https://gitlab.com/crafts-records/owasp-pangloss/pangloss-backend-java-springboot1).
+For more information about Pangloss, please take a look at the [backend documentation](https://gitlab.com/crafts-records/pangloss/pangloss-backend-java-springboot1).
 
 ## Launching the front
 
