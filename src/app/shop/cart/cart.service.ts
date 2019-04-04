@@ -19,19 +19,23 @@ export class CartService {
   }
 
   addItem(cart:Cart, item:Item) : Observable<Cart>{
-    return this.http.patch<Cart>(cart._links.self.href,
+    return this.http.patch<Cart>(`${environment.apiUrl}/carts/${this.cartId(cart)}`,
         [{ "op" : "add", "path" : "/items/-", "value" : { "id": item.id, "name": item.name, "price": item.price } }],
         {headers : this.headers, withCredentials: true})
   }
 
   udpateAddress(cart: Cart) : Observable<Cart>{
-    return this.http.patch<Cart>(cart._links.self.href,
+    return this.http.patch<Cart>(`${environment.apiUrl}/carts/${this.cartId(cart)}`,
       [{ "op" : "add", "path" : "/address", "value" : cart.address }],
       {headers : this.headers, withCredentials: true})
   }
 
   purchase(cart: Cart){
-    const cartId = cart._links.self.href.substring(`${environment.apiUrl}/carts/`.length)
-    window.location.href =`${environment.backendUrl}/purchases/${cartId}`
+    window.location.href =`${environment.backendUrl}/purchases/${this.cartId(cart)}`
+  }
+
+  private cartId(cart : Cart) : string{
+    const splitAddress = cart._links.self.href.split('/')
+    return splitAddress[splitAddress.length -1]
   }
 }

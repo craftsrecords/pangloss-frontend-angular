@@ -5,7 +5,7 @@ const baseUrl = 'https://localhost:1759'
 
 export const environment = {
   production: false,
-  apiUrl: `${baseUrl}/api`,
+  apiUrl: `/api`,
   backendUrl: baseUrl
 };
 

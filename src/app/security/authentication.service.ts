@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, catchError, pluck } from 'rxjs/operators';
+import { flatMap, map, catchError, pluck } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class AuthenticationService {
   };
 
   private profile() {
-    return this.http.get<any>(`${environment.apiUrl}/profile`,{withCredentials: true});
+    return this.http.get<any>(`${environment.apiUrl}/profile`, { withCredentials: true });
   }
 
 
@@ -29,15 +29,18 @@ export class AuthenticationService {
     return this.profile().pipe(pluck('name'))
   }
 
-  authenticate(username : string, password: string) {
-    const loginRequest = new HttpParams()
-      .set(`username`, username)
-      .set(`password`, password)
+  authenticate(username: string, password: string) {
+    return this.retrieveCsrfToken()
+      .pipe(flatMap((res) => {
+        const loginRequest = new HttpParams()
+          .set(`username`, username)
+          .set(`password`, password)
 
-    return this.http.post<any>(`${environment.apiUrl}/login`, loginRequest, {withCredentials: true})
+        return this.http.post<any>(`${environment.apiUrl}/login`, loginRequest, { withCredentials: true })
+      }));
   }
 
-  retrieveCsrfToken(){
+  retrieveCsrfToken() {
     return this.http.get<any>(`${environment.apiUrl}/csrf`)
   }
 

@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.retrieveCsrfToken()
-    this.logout()
+   this.logout()
   }
 
   login() {

@@ -16,7 +16,6 @@ import { ItemsComponent } from './shop/items/items.component';
 import { CategoryDetailsComponent } from './shop/category/category-details/category-details.component';
 import { CartComponent } from './shop/cart/cart.component';
 import { UnauthorizedInterceptor } from './security/unauthorized-interceptor';
-import { HttpXsrfInterceptor } from './security/httpxsrf-interceptor';
 
 @NgModule({
   declarations: [
@@ -59,8 +58,7 @@ import { HttpXsrfInterceptor } from './security/httpxsrf-interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: UnauthorizedInterceptor,
       multi: true
-    },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true }
+    }
   ],
   bootstrap: [AppComponent]
 })
